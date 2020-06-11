@@ -21,7 +21,7 @@ if(isset($_GET["err"])){
         break;
     }
 }
-$date; $tabella; $totale_positivi; $dimessi_guariti; $deceduti;
+$date; $tabella; $totale_positivi; $dimessi_guariti; $deceduti; $ris;
 grafico_date();
 tabella(str_replace(' ', '-', $reg));
 grafico_comparativo(str_replace(' ', '-', $reg));
@@ -33,9 +33,7 @@ grafico_comparativo(str_replace(' ', '-', $reg));
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body class="pagina">
-        <?php 
-            menu();
-        ?>    
+        <?php menu(); ?>
         <br><br><br>
         <ul class="menu_regioni">
             <li><a href="?reg=Italia">ITALIA</a></li>
@@ -62,7 +60,7 @@ grafico_comparativo(str_replace(' ', '-', $reg));
             <li><a href="?reg=Veneto">Veneto</a></li>
         </ul>
         <h1 class="titolo"><img src="stemmi/<?php echo $reg?>.svg" width="30" height="30"><?php titolo($reg); ?></h1>
-        <?php box($reg);?>
+        <?php box(str_replace(' ', '-', $reg));?>
 
         <div class="grafico_totale_casi">
             <p>Casi totali (nomeLuogo)</p>
@@ -93,14 +91,20 @@ grafico_comparativo(str_replace(' ', '-', $reg));
             </script>
         </div>
 
-        <div class="tabella">
+        <div class="tabella_div">
             <p>Tabella</p>
-            <table>
-                <tr><td>Tamponi totali</td><td><?php echo $tabella->tamponi;?></td></tr>
-                <tr><td>Terapia intensiva</td><td><?php echo $tabella->terapia_intensiva0;?></td><td><?php echo $tabella->terapia_intensiva1;?></td><td><?php echo $tabella->terapia_intensiva2;?></td></tr>
-                <tr><td>Ricoverati</td><td><?php echo $tabella->ricoverati_con_sintomi0;?></td><td><?php echo $tabella->ricoverati_con_sintomi1;?></td><td><?php echo $tabella->ricoverati_con_sintomi2;?></td></tr>
-                <tr><td>Isolamento domiciliale</td><td><?php echo $tabella->isolamento_domiciliare0;?></td><td><?php echo $tabella->isolamento_domiciliare1;?></td><td><?php echo $tabella->isolamento_domiciliare2;?></td></tr>
-                <tr><td>% in terapia intensiva<br><?php echo $tabella->perc_terapia_intensiva;?></td><td>% in ricovero<br><?php echo $tabella->perc_ricoverati_con_sintomi;?></td><td>% in isolamento<br><?php echo $tabella->perc_isolamento_domiciliare;?></td></tr>
+            <table class="table_dark2">
+                <tr style="border-top:1px solid rgb(163, 163, 163)"><td>TAMPONI TOTALI</td><td><?php echo $tabella->tamponi;?></td></tr>
+            </table>
+            <table class="table_dark2">
+                <tr><td></td><td>oggi</td><td>ieri</td><td>l'altro ieri</td></tr>
+                <tr><td>TER. INTENSIVA</td><td><?php echo $tabella->terapia_intensiva0;?></td><td><?php echo $tabella->terapia_intensiva1;?></td><td><?php echo $tabella->terapia_intensiva2;?></td></tr>
+                <tr><td>RICOVERATI</td><td class=><?php echo $tabella->ricoverati_con_sintomi0;?></td><td><?php echo $tabella->ricoverati_con_sintomi1;?></td><td><?php echo $tabella->ricoverati_con_sintomi2;?></td></tr>
+                <tr><td>ISOLAMENTO</td><td><?php echo $tabella->isolamento_domiciliare0;?></td><td><?php echo $tabella->isolamento_domiciliare1;?></td><td><?php echo $tabella->isolamento_domiciliare2;?></td></tr>
+            </table>
+            <table class="table_dark2">
+                <tr><td style="border-bottom:none; border-right:1px solid rgb(163, 163, 163)">TER. INTENSIVA</td><td style="border-bottom:none; border-right:1px solid rgb(163, 163, 163)">RICOVERO</td><td  style="border-bottom:none">ISOLAMENTO</td></tr>
+                <tr><td style="border-right:1px solid rgb(163, 163, 163)"><?php echo $tabella->perc_terapia_intensiva."%";?></td><td style="border-right:1px solid rgb(163, 163, 163)"><?php echo $tabella->perc_ricoverati_con_sintomi."%";?></td><td><?php echo $tabella->perc_isolamento_domiciliare."%";?></td></tr>
             </table>
         </div>
 
@@ -134,7 +138,7 @@ grafico_comparativo(str_replace(' ', '-', $reg));
         </div>
 
         <div class="grafico_comparativo">
-            <br><br><br><p>Attualmente positivi - Guariti - Deceduti</p>
+            <br><br><br><br><p>Attualmente positivi - Guariti - Deceduti</p>
             <canvas id="comparativo" ></canvas>
             <script>
                 var ctx = document.getElementById('comparativo').getContext('2d');
@@ -179,7 +183,7 @@ grafico_comparativo(str_replace(' ', '-', $reg));
         ?>
 
         <div class="grafico_tamponi">
-            <br><br><br><p>Tamponi</p>
+            <br><br><br><br><p>Tamponi</p>
             <canvas id="tamponi" ></canvas>
             <script>
                 var ctx = document.getElementById('tamponi').getContext('2d');

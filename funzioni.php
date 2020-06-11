@@ -1,5 +1,6 @@
 <?php
 function menu(){
+    global $ris;
     $file = file_get_contents("https://api--covid.herokuapp.com?mod=ultimo_aggiornamento");
     $ris = json_decode($file);
     echo"<ul class='menu'>";
@@ -16,14 +17,13 @@ function menu(){
 }
 function menu_accesso(){
     if(isset($_SESSION["user"])){
-        return "<a href='utente.php' class='login_menu'>".$_SESSION["user"]."<a>";
+        return "<a href='pannello.php' class='login_menu'>".$_SESSION["user"]."<a>";
     }else{
         return "<li class='login_menu' onclick=\"document.getElementById('id01').style.display='block'\">ACCEDI</li>";
     }
 }
 
 function box($reg){
-    $reg=str_replace(' ', '-', $reg);
     $file = file_get_contents("https://api--covid.herokuapp.com?mod=box&reg=".$reg);
     $ris = json_decode($file);
     echo'<div class="box_totale_casi">
@@ -169,5 +169,36 @@ function registra(){
     }else{
         return 1;
     }
+}
+
+function modifica_nazione($data, $chiave, $valore, $user){
+    $file = file_get_contents("https://api--covid.herokuapp.com?mod=modifica_nazione&data=$data&chiave=$chiave&valore=$valore&user=$user");
+}
+function modifica_regione($reg, $data, $chiave, $valore, $user){
+    $file = file_get_contents("https://api--covid.herokuapp.com?mod=modifica_regione&reg=$reg&data=$data&chiave=$chiave&valore=$valore&user=$user");
+}
+function modifica_provincia($prov, $data, $valore, $user){
+    $file = file_get_contents("https://api--covid.herokuapp.com?mod=modifica_provincia&prov=$prov&data=$data&valore=$valore&user=$user");
+}
+
+function cronologia_modifiche(){
+    global $rows;global $id;global $data_modifica;global $data;global $luogo;global $chiave;global $valore_vecchio;global $valore_nuovo;global $user_fk;
+    $file = file_get_contents("https://api--covid.herokuapp.com?mod=cronologia_modifiche");
+    $ris = json_decode($file);
+    $rows=$ris->rows;
+    for($i=0; $i<$rows; $i++){
+        $id[$i]=$ris->$i[0];
+        $data_modifica[$i]=$ris->$i[1];
+        $data[$i]=$ris->$i[2];
+        $luogo[$i]=$ris->$i[3];
+        $chiave[$i]=$ris->$i[4];
+        $valore_vecchio[$i]=$ris->$i[5];
+        $valore_nuovo[$i]=$ris->$i[6];
+        $user_fk[$i]=$ris->$i[7];
+    }
+}
+
+function elimina($id){
+    $file = file_get_contents("https://api--covid.herokuapp.com?mod=elimina&id=$id");
 }
 ?>

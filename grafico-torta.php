@@ -4,7 +4,7 @@ $valore_reg;
 grafico_regioni();
 ?>
 <div class="grafico_torta">
-    <br><br><br><p>Casi totali per regione</p>
+    <br><br><br><br><p>Casi totali per regione</p>
     <canvas id="CTTorta" ></canvas>
     <script>
         var ctx = document.getElementById('CTTorta').getContext('2d');

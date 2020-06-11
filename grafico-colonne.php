@@ -4,7 +4,7 @@ $valore_prov;
 grafico_provincie(str_replace(' ', '-', $reg));
 ?>
 <div class="grafico_colonne">
-    <br><br><br><p>Casi totali per provincia</p>
+    <br><br><br><br><p>Casi totali per provincia</p>
     <canvas id="CTColonne" ></canvas>
     <script>
         var ctx = document.getElementById('CTColonne').getContext('2d');

@@ -60,6 +60,9 @@
 	float: left;
 	margin: 0;
 }
+.box_totale_casi:hover {
+	opacity: 0.9;
+  }
 .box_guariti{
 	text-align: center;
 	background-color: rgb(91, 214, 98);
@@ -68,6 +71,9 @@
 	float: left;
 	margin: 0;
 }
+.box_guariti:hover {
+	opacity: 0.9;
+  }
 .box_deceduti{
 	text-align: center;
 	background-color: rgb(179, 40, 40);
@@ -76,6 +82,9 @@
 	float: left;
 	margin: 0;
 }
+.box_deceduti:hover {
+	opacity: 0.9;
+  }
 .box_mortalita{
 	text-align: center;
 	background-color: rgb(172, 79, 156);
@@ -84,6 +93,9 @@
 	float: left;
 	margin: 0;
 }
+.box_mortalita:hover {
+	opacity: 0.9;
+  }
 .box_attualmente_positivi{
 	text-align: center;
 	background-color: rgb(219, 217, 85);
@@ -92,6 +104,9 @@
 	float: left;
 	margin: 0;
 }
+.box_attualmente_positivi:hover {
+	opacity: 0.9;
+  }
 .grafico_regioni{
 	height: 80%;
 	width: 33%;
@@ -134,12 +149,7 @@
 	height: 35%;
 	width: 30%;
 }
-.tabella{
-	text-align: center;
-	float: left;
-	height: 35%;
-	width: 30%;
-}
+
 /*//////////ANDAMENTO_REGIONALE//////////*/
 .menu_regioni{
 	width: 10%;
@@ -158,7 +168,9 @@
 	text-decoration: none;
 }
 .menu_regioni a:hover {
-	background-color: #ccc;
+	background-color: rgba(204, 204, 204, 0.568);
+	opacity: 0.9;
+	color: rgb(255, 255, 255);
 }
 .titolo{
 	text-align: left;
@@ -173,7 +185,7 @@ form {
   }
   
   /* Full-width inputs */
-  input[type=text], input[type=password] {
+  input[type=text], input[type=password], input[type=date], input[type=number], select {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -195,6 +207,20 @@ form {
   
   /* Add a hover effect for buttons */
   button:hover {
+	opacity: 0.8;
+  }
+  .menu_modifica_admin {
+	background-color: rgb(19, 68, 114);
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 33%;
+  }
+  
+  /* Add a hover effect for buttons */
+  .menu_modifica_admin:hover {
 	opacity: 0.8;
   }
   
@@ -281,4 +307,68 @@ form {
   @keyframes animatezoom {
 	from {transform: scale(0)}
 	to {transform: scale(1)}
+  }
+
+  .table_dark {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 15px;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+	background: rgb(56, 54, 54);
+	margin: 10px;
+  }
+  .table_dark th {
+	color: rgb(135, 182, 189);
+	border-bottom: 1px solid rgb(163, 163, 163);
+	padding: 15px 17px;
+	text-align: center;
+  }
+  .table_dark td {
+	color: rgb(201, 201, 201);
+	border-bottom:1px solid rgb(163, 163, 163);
+	padding: 10px 17px;
+	text-align: center;
+  }
+  .table_dark caption {
+	padding: 15px;
+	color: white;
+	font-size: 25px;
+	text-align: center;
+	font-weight: bold;
+  }
+  .table_dark tr:hover td {
+	background: rgb(49, 47, 47);
+	color: rgb(255, 255, 255);
+  }
+
+  .tabella_div{
+	text-align: left;
+	float: left;
+	height: 35%;
+	width: 30%;
+  }
+
+  .table_dark2 {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	width: 100%;
+	height: 30%;
+	text-align: left;
+	border-collapse: collapse;
+	background: rgb(56, 54, 54);
+  }
+  .table_dark2 th {
+	color: rgb(135, 182, 189);
+	border-bottom: 1px solid rgb(163, 163, 163);
+	text-align: center;
+  }
+  .table_dark2 td {
+	color: rgb(128, 128, 128);
+	border-bottom:1px solid rgb(163, 163, 163);
+	text-align: center;
+  }
+  .table_dark2 caption {
+	color: white;
+	text-align: center;
+	font-weight: bold;
   }
