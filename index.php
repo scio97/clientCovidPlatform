@@ -63,7 +63,7 @@ grafico_comparativo(str_replace(' ', '-', $reg));
         <?php box(str_replace(' ', '-', $reg));?>
 
         <div class="grafico_totale_casi">
-            <p>Casi totali (nomeLuogo)</p>
+            <p class="titolo">Casi totali</p>
             <canvas id="CTNazione" ></canvas>
             <script>
                 var ctx = document.getElementById('CTNazione').getContext('2d');
@@ -92,7 +92,7 @@ grafico_comparativo(str_replace(' ', '-', $reg));
         </div>
 
         <div class="tabella_div">
-            <p>Tabella</p>
+            <p class="titolo">Tabella</p>
             <table class="table_dark2">
                 <tr style="border-top:1px solid rgb(163, 163, 163)"><td>TAMPONI TOTALI</td><td><?php echo $tabella->tamponi;?></td></tr>
             </table>
@@ -109,7 +109,7 @@ grafico_comparativo(str_replace(' ', '-', $reg));
         </div>
 
         <div class="grafico_nuovi_positivi">
-            <p>Nuovi Positivi</p>
+            <p class="titolo">Nuovi Positivi</p>
             <canvas id="nuoviPositivi" ></canvas>
             <script>
                 var ctx = document.getElementById('nuoviPositivi').getContext('2d');
@@ -138,7 +138,7 @@ grafico_comparativo(str_replace(' ', '-', $reg));
         </div>
 
         <div class="grafico_comparativo">
-            <br><br><br><br><p>Attualmente positivi - Guariti - Deceduti</p>
+            <br><br><br><br><p class="titolo">Attualmente positivi - Guariti - Deceduti</p>
             <canvas id="comparativo" ></canvas>
             <script>
                 var ctx = document.getElementById('comparativo').getContext('2d');
@@ -183,7 +183,7 @@ grafico_comparativo(str_replace(' ', '-', $reg));
         ?>
 
         <div class="grafico_tamponi">
-            <br><br><br><br><p>Tamponi</p>
+            <br><br><br><br><p class="titolo">Tamponi</p>
             <canvas id="tamponi" ></canvas>
             <script>
                 var ctx = document.getElementById('tamponi').getContext('2d');
