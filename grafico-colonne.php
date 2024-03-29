@@ -10,7 +10,7 @@ grafico_provincie(str_replace(' ', '-', $reg));
         var ctx = document.getElementById('CTColonne').getContext('2d');
         var chart = new Chart(ctx, {
             
-            type: 'horizontalBar',
+            type: 'bar',
 
             data: {
                 labels: [<?php echo $nome_prov;?>],

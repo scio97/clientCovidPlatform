@@ -1,7 +1,10 @@
 <?php
+$address = "http://localhost:8001";
+
 function menu(){
+    global $address;
     global $ris;
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=ultimo_aggiornamento");
+    $file = file_get_contents($address."?mod=ultimo_aggiornamento");
     $ris = json_decode($file);
     echo"<ul class='menu'>";
     echo"<li class='titolo_menu'><strong>COVID-19<br>ITALIA</strong></li>";
@@ -24,7 +27,8 @@ function menu_accesso(){
 }
 
 function box($reg){
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=box&reg=".$reg);
+    global $address;
+    $file = file_get_contents($address."?mod=box&reg=".$reg);
     $ris = json_decode($file);
     echo'<div class="box_totale_casi">
             <h3>TOTALE CASI</h3>
@@ -54,9 +58,10 @@ function segno($n){
 }
 
 function grafico_regioni(){
+    global $address;
     global $nome_reg;
     global $valore_reg;
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=grafico_regioni");
+    $file = file_get_contents($address."?mod=grafico_regioni");
     $ris = json_decode($file);
     foreach($ris as $key => $value) {
         $nome_reg=$nome_reg.'"'.$key.'",';
@@ -64,40 +69,59 @@ function grafico_regioni(){
     }
 }
 
+function grafico_provincie($reg){
+    global $address;
+    global $nome_prov;
+    global $valore_prov;
+    $file = file_get_contents($address."?mod=grafico_provincie&reg=$reg");
+    $ris = json_decode($file);
+    foreach($ris as $key => $value) {
+        $nome_prov=$nome_prov.'"'.$key.'",';
+        $valore_prov=$valore_prov.'"'.$value.'",';
+      }
+}
+
 function grafico_date(){
+    global $address;
     global $date;
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=grafico_date");
+    $file = file_get_contents($address."?mod=grafico_date");
     $ris = json_decode($file);
     for($i=0; $i<count($ris); $i++){
         $date=$date.'"'.$ris[$i].'",';
     }
 }
+
 function grafico_totale_casi($reg){
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=grafico_totale_casi&reg=$reg");
+    global $address;
+    $file = file_get_contents($address."?mod=grafico_totale_casi&reg=$reg");
     $ris = json_decode($file);
     foreach($ris as $key => $value) {
         echo $value.',';
       }
 }
+
 function grafico_nuovi_positivi($reg){
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=grafico_nuovi_positivi&reg=$reg");
+    global $address;
+    $file = file_get_contents($address."?mod=grafico_nuovi_positivi&reg=$reg");
     $ris = json_decode($file);
     foreach($ris as $key => $value) {
         echo $value.',';
       }
 }
 function grafico_tamponi($reg){
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=grafico_tamponi&reg=$reg");
+    global $address;
+    $file = file_get_contents($address."?mod=grafico_tamponi&reg=$reg");
     $ris = json_decode($file);
     foreach($ris as $key => $value) {
         echo $value.',';
       }
 }
 function grafico_comparativo($reg){
+    global $address;
     global $totale_positivi;
     global $dimessi_guariti;
     global $deceduti;
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=grafico_comparativo&reg=$reg");
+    $file = file_get_contents($address."?mod=grafico_comparativo&reg=$reg");
     $ris = json_decode($file);
     for($i=0; $i<count($ris); $i++){
         $totale_positivi=$totale_positivi.'"'.$ris[$i]->totale_positivi.'",';
@@ -107,20 +131,10 @@ function grafico_comparativo($reg){
 }
 
 function tabella($reg){
+    global $address;
     global $tabella;
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=tabella&reg=$reg");
+    $file = file_get_contents($address."?mod=tabella&reg=$reg");
     $tabella = json_decode($file);  
-}
-
-function grafico_provincie($reg){
-    global $nome_prov;
-    global $valore_prov;
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=grafico_provincie&reg=$reg");
-    $ris = json_decode($file);
-    foreach($ris as $key => $value) {
-        $nome_prov=$nome_prov.'"'.$key.'",';
-        $valore_prov=$valore_prov.'"'.$value.'",';
-      }
 }
 
 function titolo($reg){
@@ -138,9 +152,10 @@ function titolo($reg){
 }
 
 function login(){
+    global $address;
     $user = $_GET["user"];
     $password = $_GET["password"];
-    $url = "https://api--covid.herokuapp.com?mod=login&user=$user&password=$password";
+    $url = $address."?mod=login&user=$user&password=$password";
     $file = file_get_contents($url);
     $risposta = json_decode($file);
     if($risposta->risultato=="ok"){
@@ -157,9 +172,10 @@ function login(){
 }
 
 function registra(){
+    global $address;
     $user = $_GET["user"];
     $password = $_GET["password"];
-    $url = "https://api--covid.herokuapp.com?mod=registra&user=$user&password=$password";
+    $url = $address."?mod=registra&user=$user&password=$password";
     $file = file_get_contents($url);
     $risposta = json_decode($file);
     if($risposta->risultato==true){
@@ -172,18 +188,22 @@ function registra(){
 }
 
 function modifica_nazione($data, $chiave, $valore, $user){
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=modifica_nazione&data=$data&chiave=$chiave&valore=$valore&user=$user");
+    global $address;
+    $file = file_get_contents($address."?mod=modifica_nazione&data=$data&chiave=$chiave&valore=$valore&user=$user");
 }
 function modifica_regione($reg, $data, $chiave, $valore, $user){
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=modifica_regione&reg=$reg&data=$data&chiave=$chiave&valore=$valore&user=$user");
+    global $address;
+    $file = file_get_contents($address."?mod=modifica_regione&reg=$reg&data=$data&chiave=$chiave&valore=$valore&user=$user");
 }
 function modifica_provincia($prov, $data, $valore, $user){
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=modifica_provincia&prov=$prov&data=$data&valore=$valore&user=$user");
+    global $address;
+    $file = file_get_contents($address."?mod=modifica_provincia&prov=$prov&data=$data&valore=$valore&user=$user");
 }
 
 function cronologia_modifiche(){
+    global $address;
     global $rows;global $id;global $data_modifica;global $data;global $luogo;global $chiave;global $valore_vecchio;global $valore_nuovo;global $user_fk;
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=cronologia_modifiche");
+    $file = file_get_contents($address."?mod=cronologia_modifiche");
     $ris = json_decode($file);
     $rows=$ris->rows;
     for($i=0; $i<$rows; $i++){
@@ -199,6 +219,7 @@ function cronologia_modifiche(){
 }
 
 function elimina($id){
-    $file = file_get_contents("https://api--covid.herokuapp.com?mod=elimina&id=$id");
+    global $address;
+    $file = file_get_contents($address."?mod=elimina&id=$id");
 }
 ?>
