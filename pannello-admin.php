@@ -299,7 +299,7 @@
                             echo "<td>".$valore_nuovo[$i]."</td>";
                             echo "<td>".$user_fk[$i]."</td>";
                             //echo "<td><a href='https://clientcovid.herokuapp.com/elimina.php?id=".$id[$i]."'><img src='stemmi/elimina.svg' width='20' height='20'></td>";
-                            echo "<td><a href='http://localhost:8000/elimina.php?id=".$id[$i]."'><img src='stemmi/elimina.svg' width='20' height='20'></td>";header("location: /index.php");
+                            echo "<td><a href='http://localhost:8002/elimina.php?id=".$id[$i]."'><img src='stemmi/elimina.svg' width='20' height='20'></td>";header("location: /index.php");
                             echo "</tr>";
                         }
                     ?>    
