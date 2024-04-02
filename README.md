@@ -22,3 +22,26 @@ Per visualizzare i dati è necessario avere in esecuzione le api adeguate per il
 
 # UTILIZZO
 
+Una volta avviato il progetto, collegandosi via browser all'indirizzo specificato durante l'esecuzione (localhost:8000),
+sarà mostrata la pagina principale della webapp che da una panoramica generale dei dati a livello nazionale.
+
+<div align="center">
+  <img width="1901" alt="Senza titolo" src="https://github.com/scio97/clientCovidPlatform/assets/56976553/8bac8193-d0dd-4520-b231-3f10a262322f">
+</div>
+
+Oltre ai vari grafici/tabelle presenti al centro pagina, è presente un menu a sinistra che consente di aprire le varie sezioni relative alle singole regioni/provincie autonome,
+aprendo queste ultime vengono visualizzati i dati relativi alla regione/provincia autonoma selezionata.
+
+Sulla barra presente nella parte alta della pagina è possibile registrarsi o accedere con due tipologie di account: ospite o amministratore,
+con l'account ospite ad oggi non è possibile fare nulla di più rispetto ad un utente non loggato mentre con l'account amministratore vi è la possibilità di modificare i dati nel database.
+
+<div align="center">
+  <img width="1603" alt="Senza titolo" src="https://github.com/scio97/clientCovidPlatform/assets/56976553/be404df8-2a85-43f4-af4a-4be10e9c3330">
+</div>
+
+Queste modifiche saranno poi visualizzabili nella pagina utente che mostra l'intera cronologia delle modifiche effettuate dall'utente loggato con la possibilità di annullarle.
+
+<div align="center">
+  <img width="1903" alt="Senza titolo" src="https://github.com/scio97/clientCovidPlatform/assets/56976553/dc8a30f3-8585-4f63-8b93-2f83d05805ff">
+</div>
+
