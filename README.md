@@ -10,7 +10,7 @@ Per la parte relativa a JavaScript, il progetto implementa la libreria open-sour
 
 ### TECNOLOGIE IMPLEMENTATE
 
-Il progetto è stato sviluppato utilizzando le seguenti tecnologie: PHP, JavaScript (chart.js)
+Il progetto è stato sviluppato utilizzando le seguenti tecnologie: PHP, JavaScript (chart.js), HTML, CSS
 
 ## INSTALLAZIONE
 
