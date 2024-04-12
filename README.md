@@ -8,6 +8,10 @@ consentendo all'utente di registrarsi e loggarsi e permettendo agli utenti ammin
 Per la parte relativa a JavaScript, il progetto implementa la libreria open-source chart.js per la visualizzazione dei dati sotto forma di grafici
 (https://cdn.jsdelivr.net/npm/chart.js)
 
+### TECNOLOGIE IMPLEMENTATE
+
+Il progetto è stato sviluppato utilizzando le seguenti tecnologie: PHP, JavaScript (chart.js)
+
 ## INSTALLAZIONE
 
 Per eseguire correttamente il progetto è necessario avere installata sulla macchina una versione recente di PHP, per eseguire il progetto da terminale inserire il codice:
